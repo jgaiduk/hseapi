@@ -1,0 +1,17 @@
+def get_masters_programs():
+    """
+    Выдает список направлений подготовки, актуальных на набор текущего года.
+    """
+    
+    link = "https://www.hse.ru/education/programs/#magister"
+    import re
+    import requests
+    from bs4 import BeautifulSoup
+    masters_programs_list = []
+    r = requests.get(link)
+    page = BeautifulSoup(r.text, 'html.parser')
+    list_of_magisters_by_program = page.body.find_all("div", re.compile("education_magister"))
+    for program__title in list_of_magisters_by_program:
+        title = program__title.h3.text
+        masters_programs_list.append(title)
+    return masters_programs_list
