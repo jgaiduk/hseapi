@@ -1,2 +1,2 @@
-# hseapi
-this is me learning how to use github
+# hse api
+API Высшей школы экономики
